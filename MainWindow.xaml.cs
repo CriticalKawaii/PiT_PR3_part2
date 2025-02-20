@@ -1,28 +1,48 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PiT_PR3_part2
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+        }
+        private void ButtonCalculate_Click(object sender, RoutedEventArgs e)
+        {
+            int A, B;
+            try
+            {
+                A = Int32.Parse(textBoxA.Text);
+                B = Int32.Parse(textBoxB.Text);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("В полях должны быть целые числа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            try
+            {
+                if ((Boolean)RadioButtonAddition.IsChecked)
+                    TextBoxResult.Text = (A + B).ToString();
+                else if ((Boolean)RadioButtonSubstraction.IsChecked)
+                    TextBoxResult.Text = (A - B).ToString();
+                else if ((Boolean)RadioButtonMultiplication.IsChecked)
+                    TextBoxResult.Text = (A * B).ToString();
+                else if ((Boolean)RadioButtonDivision.IsChecked)
+                {
+                    if (Int32.Parse(textBoxA.Text) == 0 || Int32.Parse(textBoxB.Text) == 0)
+                        throw new DivideByZeroException("Деление на ноль");
+                    TextBoxResult.Text = (A / B).ToString();
+                }
+                else
+                    throw new Exception("Не выбрана операция");
+            }
+            catch(Exception ex) when (ex is Exception || ex is DivideByZeroException)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

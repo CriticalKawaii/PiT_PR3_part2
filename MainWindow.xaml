@@ -14,20 +14,23 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="Операнд"/>
-            <TextBox Width="100"/>
-            <TextBlock Text="Операнд"/>
-            <TextBox Width="100"/>
+            <TextBlock Text="Операнд" HorizontalAlignment="Center"/>
+            <TextBox Name="textBoxA" Width="100"/>
+            <TextBlock Text="Операнд" HorizontalAlignment="Center"/>
+            <TextBox Name="textBoxB" Width="100"/>
         </StackPanel>
         <GroupBox Header="Операция" Width="100" VerticalAlignment="Center" Grid.Column="1">
             <StackPanel>
-                <RadioButton Content="+"/>
-                <RadioButton Content="-"/>
-                <RadioButton Content="*"/>
-                <RadioButton Content="/"/>
+                <RadioButton Name="RadioButtonAddition" Content="+" />
+                <RadioButton Name="RadioButtonSubstraction" Content="-" />
+                <RadioButton Name="RadioButtonMultiplication" Content="*" />
+                <RadioButton Name="RadioButtonDivision" Content="/" />
             </StackPanel>
         </GroupBox>
-        <Button Content="Вычислить" VerticalAlignment="Center" Grid.Column="2" HorizontalAlignment="Center"/>
-        <TextBox Width="100" VerticalAlignment="Center" Grid.Column="3"/>
+        <Button Name="ButtonCalculate" Content="Вычислить" VerticalAlignment="Center" Grid.Column="2" HorizontalAlignment="Center" IsDefault="True" IsEnabled="True" Click="ButtonCalculate_Click"/>
+        <StackPanel VerticalAlignment="Center" Grid.Column="3">
+            <TextBlock Text="Результат" HorizontalAlignment="Center"/>
+            <TextBox Name="TextBoxResult"  Width="100" IsReadOnly="True"/>
+        </StackPanel>
     </Grid>
 </Window>
