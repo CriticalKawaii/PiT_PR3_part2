@@ -26,15 +26,15 @@ namespace PiT_PR3_part2
             }
             try
             {
-                if ((Boolean)RadioButtonAddition.IsChecked)
+                if ((Boolean)RadioButtonAddition.IsChecked == true)
                     TextBoxResult.Text = (A + B).ToString();
-                else if ((Boolean)RadioButtonSubstraction.IsChecked)
+                else if ((Boolean)RadioButtonSubstraction.IsChecked == true) 
                     TextBoxResult.Text = (A - B).ToString();
-                else if ((Boolean)RadioButtonMultiplication.IsChecked)
+                else if ((Boolean)RadioButtonMultiplication.IsChecked == true)
                     TextBoxResult.Text = (A * B).ToString();
-                else if ((Boolean)RadioButtonDivision.IsChecked)
+                else if ((Boolean)RadioButtonDivision.IsChecked == true)
                 {
-                    if (Int32.Parse(textBoxA.Text) == 0 || Int32.Parse(textBoxB.Text) == 0)
+                    if (B == 0)
                         throw new DivideByZeroException("Деление на ноль");
                     TextBoxResult.Text = (A / B).ToString();
                 }
