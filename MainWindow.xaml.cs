@@ -14,12 +14,14 @@ namespace PiT_PR3_part2
             int A, B;
             try
             {
+                if (string.IsNullOrEmpty(textBoxA.Text) || string.IsNullOrEmpty(textBoxB.Text))
+                    throw new Exception("Не все поля заполнены");
                 A = Int32.Parse(textBoxA.Text);
                 B = Int32.Parse(textBoxB.Text);
             }
-            catch (FormatException)
+            catch (Exception ex) when (ex is Exception || ex is FormatException)
             {
-                MessageBox.Show("В полях должны быть целые числа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message == "Не все поля заполнены" ? ex.Message : "В полях должны быть целые числа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             try
@@ -41,7 +43,7 @@ namespace PiT_PR3_part2
             }
             catch(Exception ex) when (ex is Exception || ex is DivideByZeroException)
             {
-                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

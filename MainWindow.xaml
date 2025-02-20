@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PiT_PR3_part2"
         mc:Ignorable="d"
-        Title="MainWindow" MinWidth="450" MinHeight="200" Height="200" Width="450">
+        Title="Калькулятор" MinWidth="450" MinHeight="200" Height="200" Width="450">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -14,16 +14,16 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="Операнд" HorizontalAlignment="Center"/>
+            <TextBlock Text="Операнд A" HorizontalAlignment="Center"/>
             <TextBox Name="textBoxA" Width="100"/>
-            <TextBlock Text="Операнд" HorizontalAlignment="Center"/>
+            <TextBlock Text="Операнд B" HorizontalAlignment="Center"/>
             <TextBox Name="textBoxB" Width="100"/>
         </StackPanel>
         <GroupBox Header="Операция" Width="100" VerticalAlignment="Center" Grid.Column="1">
             <StackPanel>
                 <RadioButton Name="RadioButtonAddition" Content="+" />
                 <RadioButton Name="RadioButtonSubstraction" Content="-" />
-                <RadioButton Name="RadioButtonMultiplication" Content="*" />
+                <RadioButton Name="RadioButtonMultiplication" Content="*"/>
                 <RadioButton Name="RadioButtonDivision" Content="/" />
             </StackPanel>
         </GroupBox>
